@@ -1,14 +1,14 @@
 FROM golang:1.14-buster as builder
 
-WORKDIR /sftp-exporter
+WORKDIR /
 COPY ./go.mod ./
 COPY ./go.sum ./
 RUN go mod download -x
 COPY ./ ./
-RUN go build -o out/sftp-exporter main.go
+RUN go build -o sftp-exporter
 
 FROM debian:buster
 
-WORKDIR /sftp-exporter
-COPY --from=builder /sftp-exporter/bin/sftp-exporter .
+WORKDIR /
+COPY --from=builder /sftp-exporter .
 ENTRYPOINT ["./sftp-exporter"]
