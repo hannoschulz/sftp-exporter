@@ -5,7 +5,7 @@ RUN yum install -y yum-utils && \
     yum -y install net-tools iproute bind-utils && \
     rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     yum -y install jq xmlstarlet && \
-    yum -y install golang-1.15.5-1.el7 && \
+    yum -y install golang-1.14.15-3.fc32 && \
     yum -y remove epel-release && \
     yum -y clean all --enablerepo='*'
 
