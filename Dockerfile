@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7rhscl/s2i-base-rhel7:1
+FROM registry.access.redhat.com/rhel7
 
 RUN yum install -y yum-utils && \
     yum -y install hostname rsync && \
