@@ -5,7 +5,7 @@ COPY ./go.mod ./
 COPY ./go.sum ./
 RUN go mod download -x
 COPY ./ ./
-RUN make build
+RUN go build -ldflags "-X main.version=dev" -o out/sftp-exporter main.go
 
 FROM debian:buster
 
