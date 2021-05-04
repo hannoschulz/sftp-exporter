@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/rhel7
+FROM registry.access.redhat.com/rhel7 as builder
 
 RUN curl -skL https://golang.org/dl/go1.14.15.linux-amd64.tar.gz -o go1.14.15.linux-amd64.tar.gz && \
     rm -rf /usr/local/go && tar -C /usr/local -xzf go1.14.15.linux-amd64.tar.gz && \
@@ -15,4 +15,6 @@ FROM registry.access.redhat.com/rhel7
 
 WORKDIR /
 COPY --from=builder /sftp-exporter .
+
+EXPOSE 8080
 ENTRYPOINT ["./sftp-exporter"]
