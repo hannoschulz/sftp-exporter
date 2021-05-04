@@ -11,10 +11,10 @@ RUN /usr/local/go/bin/go mod download -x
 COPY ./ ./
 RUN /usr/local/go/bin/go build -o sftp-exporter
 
-FROM registry.access.redhat.com/rhel7
-
-WORKDIR /
-COPY --from=builder /sftp-exporter .
+#FROM registry.access.redhat.com/rhel7
+#WORKDIR /
+#COPY --from=builder /sftp-exporter .
 
 EXPOSE 8080
+
 ENTRYPOINT ["./sftp-exporter"]
