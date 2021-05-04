@@ -1,13 +1,10 @@
 FROM registry.access.redhat.com/rhel7
 
 RUN yum install -y yum-utils && \
-    yum -y install hostname rsync && \
-    yum -y install net-tools iproute bind-utils && \
-    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    yum -y install jq xmlstarlet && \
-    yum -y install golang-1.14.15-3.fc32 && \
-    yum -y remove epel-release && \
-    yum -y clean all --enablerepo='*'
+    yum -y clean all --enablerepo='*' && \
+    curl -skL https://golang.org/dl/go1.14.15.linux-amd64.tar.gz -o go1.14.15.linux-amd64.tar.gz && \
+    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.14.15.linux-amd64.tar.gz && \
+    export PATH=$PATH:/usr/local/go/bin
 
 WORKDIR /
 COPY ./go.mod ./
