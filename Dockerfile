@@ -1,8 +1,6 @@
 FROM registry.access.redhat.com/rhel7
 
-RUN yum install -y yum-utils && \
-    yum -y clean all --enablerepo='*' && \
-    curl -skL https://golang.org/dl/go1.14.15.linux-amd64.tar.gz -o go1.14.15.linux-amd64.tar.gz && \
+RUN curl -skL https://golang.org/dl/go1.14.15.linux-amd64.tar.gz -o go1.14.15.linux-amd64.tar.gz && \
     rm -rf /usr/local/go && tar -C /usr/local -xzf go1.14.15.linux-amd64.tar.gz && \
     export PATH=$PATH:/usr/local/go/bin
 
