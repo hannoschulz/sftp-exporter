@@ -9,9 +9,9 @@ RUN yum install -y yum-utils && \
 WORKDIR /
 COPY ./go.mod ./
 COPY ./go.sum ./
-RUN go mod download -x
+RUN /usr/local/go/bin/go mod download -x
 COPY ./ ./
-RUN go build -o sftp-exporter
+RUN /usr/local/go/bin/go build -o sftp-exporter
 
 # FROM registry.access.redhat.com/rhel7
 
